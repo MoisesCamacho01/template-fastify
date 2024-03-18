@@ -1,0 +1,78 @@
+{
+	"get": {
+		"schema": {
+			"description": "get users",
+			"tags": ["users"],
+			"summary": "Get all users",
+			"security": [{ "apiKey": [] }],
+			"response": {}
+		}
+	},
+
+	"post": {
+		"schema": {
+			"description": "create a user",
+			"tags": ["users"],
+			"summary": "Create a user",
+			"security": [{ "apiKey": [] }],
+			"body": {
+				"type": "object",
+				"required": [],
+				"properties": {}
+			},
+			"response": {}
+		}
+	},
+	"put": {
+		"schema": {
+			"description": "create a user",
+			"tags": ["users"],
+			"summary": "Create a user",
+			"security": [{ "apiKey": [] }],
+			"params": {
+				"type": "object",
+        "required": [],
+        "properties": {}
+			},
+			"body": {
+				"type": "object",
+				"required": [],
+				"properties": {}
+			},
+			"response": {}
+		}
+	},
+	"patch": {
+		"schema": {
+			"description": "create a user",
+			"tags": ["users"],
+			"summary": "Create a user",
+			"security": [{ "apiKey": [] }],
+			"params": {
+				"type": "object",
+        "required": [],
+        "properties": {}
+			},
+			"body": {
+				"type": "object",
+				"required": [],
+				"properties": {}
+			},
+			"response": {}
+		}
+	},
+	"delete": {
+		"schema": {
+			"description": "create a user",
+			"tags": ["users"],
+			"summary": "Create a user",
+			"security": [{ "apiKey": [] }],
+			"params": {
+				"type": "object",
+        "required": [],
+        "properties": {}
+			},
+			"response": {}
+		}
+	}
+}

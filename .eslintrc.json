@@ -1,0 +1,26 @@
+{
+    "env": {
+        "es2021": true,
+        "node": true
+    },
+    "extends": [
+			"standard-with-typescript",
+			"eslint-config-prettier"
+		],
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+    },
+    "rules": {
+			// "semi": ["error", "always"], // Asegura que cada línea termine con un punto y coma
+			"@typescript-eslint/no-floating-promises": "off",
+			"@typescript-eslint/consistent-type-imports": "off",
+			"@typescript-eslint/explicit-function-return-type": "off",
+			"@typescript-eslint/no-useless-constructor": "off",
+			"@typescript-eslint/return-await": "off",
+			"@typescript-eslint/prefer-readonly": "warn",
+			"@typescript-eslint/no-unused-vars": "warn",
+			"n/no-path-concat": "off",
+			"prefer-const": "off"
+    }
+}

@@ -1,0 +1,20 @@
+{
+  "openapi": {
+    "openapi": "3.0.0",
+    "info": {
+      "title": "Documentation",
+      "description": "new description",
+      "version": "1.0.0"
+    },
+    "servers": [{ "url": "http://localhost:4000/api/v1" }],
+    "components": {
+      "securitySchemes": {
+        "apiKey": {
+          "type": "apiKey",
+          "name": "apiKey",
+          "in": "header"
+        }
+      }
+    }
+  }
+}

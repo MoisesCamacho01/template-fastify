@@ -1,0 +1,53 @@
+{
+	"200": {
+		"description": "Successful response",
+		"type": "object",
+		"properties": {
+			"ok": { "type": "boolean" },
+			"message": { "type": "string" },
+			"body": {
+				"oneOf": [{}]
+			}
+		}
+	},
+	"401": {
+		"description": "Default response",
+		"type": "object",
+		"properties": {
+			"message": { "type": "string" }
+		}
+	},
+	"400": {
+		"description": "Default response",
+		"type": "object",
+		"properties": {
+			"ok": { "type": "boolean" },
+			"message": { "type": "string" },
+			"body": {
+				"oneOf": [{}]
+			}
+		}
+	},
+	"404": {
+		"description": "Petition not found",
+		"type": "object",
+		"properties": {
+			"ok": { "type": "boolean" },
+			"message": { "type": "string" },
+			"body": {
+				"oneOf": [{}]
+			}
+		}
+	},
+	"422": {
+		"description": "Validation exception",
+		"type": "object",
+		"properties": {
+			"ok": { "type": "boolean" },
+			"message": { "type": "string" },
+			"body": {
+				"oneOf": [{}]
+			}
+		}
+	}
+}
