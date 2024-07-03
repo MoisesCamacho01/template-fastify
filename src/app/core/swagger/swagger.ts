@@ -6,7 +6,7 @@ export class Swagger {
 		private readonly swagger: object = JSON.parse(fs.readFileSync(`${__dirname}/../../../../swagger/swagger.json`, 'utf8')),
 		private readonly methods: object = JSON.parse(fs.readFileSync(`${__dirname}/../../../../swagger/methods.json`, 'utf8')),
 		private readonly httpCode: object = JSON.parse(fs.readFileSync(`${__dirname}/../../../../swagger/httpCode.json`, 'utf8')),
-		private readonly url: string = `${process.env.URL}:${process.env.PORT}`
+		private readonly url: string = (process.env.NODE_ENV == 'dev') ? `${process.env.URL}:${process.env.PORT}` : `${process.env.URL}`
 	) { }
 
 	public getOpenApi = (versions: string[], callback: (data: any) => void): void => {
