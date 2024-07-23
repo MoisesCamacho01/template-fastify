@@ -2,17 +2,23 @@ import Fastify, { FastifyInstance, FastifyReply, FastifyRequest } from "fastify"
 import routesV1 from "./routes/v1/index.routes";
 import fastifySwagger from "@fastify/swagger";
 import fastifySwaggerUi from "@fastify/swagger-ui";
+import fastifyMongodb from "@fastify/mongodb";
 import cors from '@fastify/cors'
-import { Swagger } from "./core/swagger/swagger";
+import { Swagger } from "../core/swagger/swagger";
 
 const app: FastifyInstance = Fastify({
 	logger: true
 });
 
-app.register(cors, { 
+app.register(fastifyMongodb, {
+	forceClose: true,
+	url: process.env.MONGO_URL
+})
+
+app.register(cors, {
 	// put your options here
 	origin: "*",
-	methods: ['GET','POST','PUT','PATH','DELETE']
+	methods: ['GET', 'POST', 'PUT', 'PATH', 'DELETE']
 })
 
 

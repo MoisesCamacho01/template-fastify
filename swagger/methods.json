@@ -25,9 +25,9 @@
 	},
 	"put": {
 		"schema": {
-			"description": "create a user",
+			"description": "Update a user",
 			"tags": ["users"],
-			"summary": "Create a user",
+			"summary": "Update a user",
 			"security": [{ "apiKey": [] }],
 			"params": {
 				"type": "object",
@@ -44,9 +44,9 @@
 	},
 	"patch": {
 		"schema": {
-			"description": "create a user",
+			"description": "Update a user",
 			"tags": ["users"],
-			"summary": "Create a user",
+			"summary": "Update a user",
 			"security": [{ "apiKey": [] }],
 			"params": {
 				"type": "object",
@@ -63,9 +63,9 @@
 	},
 	"delete": {
 		"schema": {
-			"description": "create a user",
+			"description": "Delete a user",
 			"tags": ["users"],
-			"summary": "Create a user",
+			"summary": "Delete a user",
 			"security": [{ "apiKey": [] }],
 			"params": {
 				"type": "object",
