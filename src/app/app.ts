@@ -10,10 +10,12 @@ const app: FastifyInstance = Fastify({
 	logger: true
 });
 
-app.register(fastifyMongodb, {
-	forceClose: true,
-	url: process.env.MONGO_URL
-})
+if (process.env.MONGO_URL !== ''){
+	app.register(fastifyMongodb, {
+		forceClose: true,
+		url: process.env.MONGO_URL
+	})
+}
 
 app.register(cors, {
 	// put your options here

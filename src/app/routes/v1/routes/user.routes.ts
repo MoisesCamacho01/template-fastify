@@ -2,10 +2,11 @@
 import type { FastifyInstance } from "fastify";
 import { UsersController } from "../../../controllers/users.controller";
 import { Swagger } from "../../../../core/swagger/swagger";
-import { auth } from "../../../../core/middelware/middelware";
-
+import { auth } from "../../../../core/middleware/middleware";
+import { User } from "../../../interfaces/users.interfaces";
 
 export default async function userRoutes(route: FastifyInstance, options: any, done: () => void) {
+	
 	const sw: Swagger = new Swagger();
 	const users: UsersController = new UsersController();
 	let get = await sw.swaggerGet({ description: 'get users', tags: ['users'], summary: 'Get all users' });
