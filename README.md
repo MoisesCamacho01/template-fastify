@@ -6,7 +6,7 @@ This is a basic template for projects using Fastify. It includes a basic configu
 
 **Variables:**
 
-The basic variables used for the configuration are in a .env file. You must create this file before running the project.
+The basic variables used for the configuration are in a .env-example file. You must create this file before running the project.
 
 **Running:**
 
@@ -19,3 +19,7 @@ npm run dev
 **Updates:**
 
 Small updates will be uploaded to this template every week. If you have any suggestions to make the template more scalable, please feel free to share them.
+
+**Update Diary**
+
+In the folder **Update-Diary** you will find the md files with the updates that I am making in the corresponding commits that I will upload.

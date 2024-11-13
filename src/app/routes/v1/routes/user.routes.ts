@@ -3,40 +3,24 @@ import type { FastifyInstance } from "fastify";
 import { UsersController } from "../../../controllers/users.controller";
 import { Swagger } from "../../../../core/swagger/swagger";
 import { auth } from "../../../../core/middleware/middleware";
-import { User } from "../../../interfaces/users.interfaces";
+import { UserSwagger } from "../../../swagger/user.swagger";
 
 export default async function userRoutes(route: FastifyInstance, options: any, done: () => void) {
 	
+	const userSwagger: UserSwagger = new UserSwagger();
 	const sw: Swagger = new Swagger();
+	await sw.entity(userSwagger);
 	const users: UsersController = new UsersController();
-	let get = await sw.swaggerGet({ description: 'get users', tags: ['users'], summary: 'Get all users' });
-	// body
-	let createUser = {
-		name: { type: 'string' },
-		last_name: { type: 'string' }
-	};
 
-	let paramsUser = {
-		id: { type: 'string', description: 'user id' }
-	}
+	route.get(`/`, { preHandler: [auth], schema: sw.get.schema }, users.find);
 
-	let post = await sw.swaggerPost({ description: 'create user', tags: ['users'], summary: 'create users', required: ['name'], properties: createUser });
+	route.post(`/create`, sw.post, users.create);
 
-	let put = await sw.swaggerPut({ description: 'put user', tags: ['users'], summary: 'put user', required: ['name'], properties: createUser, paramsRequired: ['id'], params: paramsUser });
+	route.put(`/put/:id`, sw.put, users.update);
 
-	let patch = await sw.swaggerPatch({ description: 'patch user', tags: ['users'], summary: 'patch user', required: ['name'], properties: createUser, paramsRequired: ['id'], params: paramsUser });
-
-	let deleteUser = await sw.swaggerDelete({ description: 'delete user', tags: ['users'], summary: 'delete user', paramsRequired: ['id'], params: paramsUser });
-
-	route.get(`/`, { preHandler: [auth], schema: get.schema }, users.find);
-
-	route.post(`/create`, post, users.create);
-
-	route.put(`/put/:id`, put, users.update);
-
-	route.patch(`/patch/:id`, patch, users.patch);
-
-	route.delete(`/delete/:id`, deleteUser, users.delete);
+	route.patch(`/patch/:id`, sw.patch, users.patch);
+	
+	route.delete(`/delete/:id`, sw.del, users.delete);
 
 	done();
 }

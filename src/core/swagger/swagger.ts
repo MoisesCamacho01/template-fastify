@@ -1,13 +1,30 @@
 import * as fs from "fs-extra";
 import { methodInterface } from "./method.interface";
+import { EntitySwaggerRepository } from "./entitySwagger.repository";
 
 export class Swagger {
+
+	public get:any;
+	public post:any;
+	public put:any;
+	public patch:any;
+	public del:any;
+
 	constructor(
 		private readonly swagger: object = JSON.parse(fs.readFileSync(`${__dirname}/../../../swagger/swagger.json`, 'utf8')),
 		private readonly methods: object = JSON.parse(fs.readFileSync(`${__dirname}/../../../swagger/methods.json`, 'utf8')),
 		private readonly httpCode: object = JSON.parse(fs.readFileSync(`${__dirname}/../../../swagger/httpCode.json`, 'utf8')),
 		private readonly url: string = (process.env.NODE_ENV == 'dev') ? `${process.env.DOMAIN}:${process.env.PORT}` : `${process.env.DOMAIN}`
-	) { }
+	) { 
+	}
+
+	public entity = async (entity:EntitySwaggerRepository) => {
+		this.get = this.swaggerGet(await entity.get());
+		this.post = this.swaggerPost(await entity.post());
+		this.put = this.swaggerPut(await entity.put());
+		this.patch = this.swaggerPatch(await entity.patch());
+		this.del = this.swaggerDelete(await entity.del());
+	} 
 
 	public getOpenApi = (versions: string[], callback: (data: any) => void): void => {
 		let sw: any = this.swagger;
@@ -16,7 +33,7 @@ export class Swagger {
 		callback(sw.openapi);
 	}
 
-	public swaggerGet = async (data: methodInterface) => {
+	private swaggerGet = (data: methodInterface) => {
 		let methods: any = this.methods;
 		let httpCode = this.httpCode;
 
@@ -28,7 +45,8 @@ export class Swagger {
 		return methods.get;
 	}
 
-	public swaggerPost = async (data: methodInterface) => {
+	private swaggerPost = (data: methodInterface) => {
+		
 		let methods: any = this.methods;
 		let httpCode = this.httpCode;
 
@@ -42,7 +60,7 @@ export class Swagger {
 		return methods.post;
 	}
 
-	public swaggerPut = async (data: methodInterface) => {
+	private swaggerPut = (data: methodInterface) => {
 		let methods: any = this.methods;
 		let httpCode = this.httpCode;
 
@@ -58,7 +76,7 @@ export class Swagger {
 		return methods.put;
 	}
 
-	public swaggerPatch = async (data: methodInterface) => {
+	private swaggerPatch = (data: methodInterface) => {
 		let methods: any = this.methods;
 		let httpCode = this.httpCode;
 
@@ -74,7 +92,7 @@ export class Swagger {
 		return methods.patch;
 	}
 
-	public swaggerDelete = async (data:methodInterface) => {
+	private swaggerDelete = (data:methodInterface) => {
 		let methods: any = this.methods;
 		let httpCode = this.httpCode;
 
