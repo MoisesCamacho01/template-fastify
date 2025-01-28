@@ -1,5 +1,8 @@
 {
     "cSpell.words": [
         "Fastify"
-    ]
+    ],
+    "editor.fontSize": 14,
+    "IDX.aI.enableInlineCompletion": true,
+    "IDX.aI.enableCodebaseIndexing": true
 }

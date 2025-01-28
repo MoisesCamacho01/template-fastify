@@ -1,9 +1,10 @@
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
 import type { FastifyInstance } from "fastify";
-import { UsersController } from "../../../controllers/users.controller";
-import { Swagger } from "../../../../core/swagger/swagger";
-import { auth } from "../../../../core/middleware/middleware";
-import { UserSwagger } from "../../../swagger/user.swagger";
+
+import { UsersController } from "@controllers/users.controller";
+import { Swagger } from "@core/swagger/swagger";
+import { auth } from "@core/middleware/middleware";
+import { UserSwagger } from "@sw/user.swagger";
 
 export default async function userRoutes(route: FastifyInstance, options: any, done: () => void) {
 	
@@ -12,10 +13,12 @@ export default async function userRoutes(route: FastifyInstance, options: any, d
 	await sw.entity(userSwagger);
 	const users: UsersController = new UsersController();
 
-	route.get(`/`, { preHandler: [auth], schema: sw.get.schema }, users.find);
+	route.get(`/`, { preHandler: [auth], schema: sw.get.schema }, users.list);
+
+	// route.get(`/:id`, { preHandler: [auth], schema: sw.get.schema }, users.find);
 
 	route.post(`/create`, sw.post, users.create);
-
+	
 	route.put(`/put/:id`, sw.put, users.update);
 
 	route.patch(`/patch/:id`, sw.patch, users.patch);

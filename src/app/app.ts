@@ -4,7 +4,7 @@ import fastifySwagger from "@fastify/swagger";
 import fastifySwaggerUi from "@fastify/swagger-ui";
 import fastifyMongodb from "@fastify/mongodb";
 import cors from '@fastify/cors'
-import { Swagger } from "../core/swagger/swagger";
+import { Swagger } from "@core/swagger/swagger";
 
 const app: FastifyInstance = Fastify({
 	logger: true

@@ -7,4 +7,5 @@ export interface methodInterface {
 	properties?: object;
 	paramsRequired?: string[];
 	params?: object;
+	requestBody?: object;
 }

@@ -2,19 +2,30 @@
 	"get": {
 		"schema": {
 			"description": "get users",
-			"tags": ["users"],
+			"tags": [
+				"users"
+			],
 			"summary": "Get all users",
-			"security": [{ "apiKey": [] }],
+			"security": [
+				{
+					"apiKey": []
+				}
+			],
 			"response": {}
 		}
 	},
-
 	"post": {
 		"schema": {
 			"description": "create a user",
-			"tags": ["users"],
+			"tags": [
+				"users"
+			],
 			"summary": "Create a user",
-			"security": [{ "apiKey": [] }],
+			"security": [
+				{
+					"apiKey": []
+				}
+			],
 			"body": {
 				"type": "object",
 				"required": [],
@@ -26,13 +37,19 @@
 	"put": {
 		"schema": {
 			"description": "Update a user",
-			"tags": ["users"],
+			"tags": [
+				"users"
+			],
 			"summary": "Update a user",
-			"security": [{ "apiKey": [] }],
+			"security": [
+				{
+					"apiKey": []
+				}
+			],
 			"params": {
 				"type": "object",
-        "required": [],
-        "properties": {}
+				"required": [],
+				"properties": {}
 			},
 			"body": {
 				"type": "object",
@@ -45,13 +62,19 @@
 	"patch": {
 		"schema": {
 			"description": "Update a user",
-			"tags": ["users"],
+			"tags": [
+				"users"
+			],
 			"summary": "Update a user",
-			"security": [{ "apiKey": [] }],
+			"security": [
+				{
+					"apiKey": []
+				}
+			],
 			"params": {
 				"type": "object",
-        "required": [],
-        "properties": {}
+				"required": [],
+				"properties": {}
 			},
 			"body": {
 				"type": "object",
@@ -64,13 +87,19 @@
 	"delete": {
 		"schema": {
 			"description": "Delete a user",
-			"tags": ["users"],
+			"tags": [
+				"users"
+			],
 			"summary": "Delete a user",
-			"security": [{ "apiKey": [] }],
+			"security": [
+				{
+					"apiKey": []
+				}
+			],
 			"params": {
 				"type": "object",
-        "required": [],
-        "properties": {}
+				"required": [],
+				"properties": {}
 			},
 			"response": {}
 		}

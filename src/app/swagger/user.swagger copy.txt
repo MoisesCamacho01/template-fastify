@@ -1,21 +1,33 @@
-import { EntitySwaggerRepository } from "@core/swagger/entitySwagger.repository";
-import { methodInterface } from "@core/swagger/method.interface"
+import { EntitySwaggerRepository } from "../../core/swagger/entitySwagger.repository";
+import { methodInterface } from "../../core/swagger/method.interface"
 
 export class UserSwagger implements EntitySwaggerRepository {
 
     public entity:string = 'User';
 
-    constructor(){}
+    constructor(){
+
+    }
 
     public body = async ():Promise<Object> => {
         return {
             name: { type: 'string' },
             last_name: { type: 'string' }
-        };
+        }
     }
 
     public required = async ():Promise<string[]> => {
-        return ['name'];
+        return ['name']
+    }
+
+    public params = async ():Promise<Object> => {
+        return {
+            id: { type: 'string', description: 'user id' }
+        }
+    }
+
+    public paramsRequired = async ():Promise<string[]> => {
+        return ['id']
     }
 
     public get = async ():Promise<methodInterface> => {
@@ -33,7 +45,7 @@ export class UserSwagger implements EntitySwaggerRepository {
             tags: [`${this.entity}(s/es)`], 
             summary: `Create ${this.entity}`, 
             required: await this.required(), 
-            properties: await this.body(),
+            properties: await this.body()
         }
         return methods
     }
@@ -44,11 +56,9 @@ export class UserSwagger implements EntitySwaggerRepository {
             tags: [`${this.entity}(s/es)`], 
             summary: `Put ${this.entity}`, 
             required: await this.required(), 
-            properties: await this.body(), 
-            paramsRequired: ['id'], 
-            params: {
-                id: { type: 'string', description: 'user id' }
-            },
+            properties: this.body(), 
+            paramsRequired: await this.paramsRequired(), 
+            params: await this.params()
         }
         return methods
     }
@@ -59,11 +69,9 @@ export class UserSwagger implements EntitySwaggerRepository {
             tags: [`${this.entity}(s/es)`], 
             summary: `Patch ${this.entity}`,
             required: await this.required(), 
-            properties: await this.body(), 
-            paramsRequired: ['id'], 
-            params: {
-                id: { type: 'string', description: 'user id' }
-            }
+            properties: this.body(), 
+            paramsRequired: await this.paramsRequired(), 
+            params: await this.params()
         }
 
         return methods;
@@ -74,10 +82,8 @@ export class UserSwagger implements EntitySwaggerRepository {
             description: `Delete ${this.entity}`, 
             tags: [`${this.entity}(s/es)`], 
             summary: `Delete ${this.entity}`, 
-            paramsRequired: ['id'], 
-            params: {
-                id: { type: 'string', description: 'user id' }
-            }
+            paramsRequired: await this.paramsRequired(), 
+            params: await  this.params()
         }
 
         return methods

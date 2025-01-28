@@ -1,12 +1,21 @@
 import { FastifyReply as Response, FastifyRequest as Request } from "fastify"
 
 export class UsersController {
-	
+
+	constructor(){}
 
 	public find = async (req: Request, res: Response) => {
 		return res.status(200).send({
 			ok: true,
 			message: 'Users recovered successfully',
+			body: {}
+		})
+	}
+
+	public list = async (req: Request, res: Response) => {
+		return res.status(200).send({
+			ok: true,
+			message: 'Users All recovered successfully',
 			body: {}
 		})
 	}
