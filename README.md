@@ -1,32 +1,57 @@
+# Plantilla de Fastify y Swagger
+
+# Descripción:
+
+Esta es una plantilla básica para proyectos que usan Fastify. Incluye una configuración básica con Swagger para facilitar la documentación de los endpoints en una API REST y hacer que los archivos de rutas sean más fáciles de leer. También se ha configurado un pequeño middleware para la autenticación utilizando una clave de API en los endpoints.
+
+## Documentación:
+* [Estructura](Documentation/STRUCTURE.md)
+* [Configuración](Documentation/CONFIGURATION.md)
+* [Ejecución](Documentation/RUNNING.md)
+* [Fastify](Documentation/FASTIFY.md)
+* [Emily](Documentation/EMILY_COMMANDS.md)
+* [Swagger](Documentation/SWAGGER.md)
+* [Middleware](Documentation/AUTHENTICATION_MIDDLEWARE.md)
+* [Base de Datos](Documentation/DATABASE.md)
+
+## Actualizaciones:
+
+En la carpeta Documentation encontrarás los archivos .md con las actualizaciones que iré realizando en los commits correspondientes que subiré.
+
+## Versiones
+* [Versión 1.0.0](Documentation/V1/v1.md)
+* [Versión 2.0.0](Documentation/V2/v2.md)
+
+## Licencia
+La plantilla fastify-template está licenciada bajo la Licencia MIT.
+
+<!--
 # Fastify and Swagger Template
 
 ## Description:
 
 This is a basic template for projects using Fastify. It includes a basic configuration with Swagger to make it easier to document endpoints in a REST API and make route files easier to read. A small middleware configuration has also been set up for authentication using an API key in the endpoints.
 
-## Variables:
+## Documentation:
+ * [Structure](Documentation/STRUCTURE.md)
+ * [Configuration](Documentation/CONFIGURATION.md)
+ * [Running](Documentation/RUNNING.md)
+ * [Fastify](Documentation/FASTIFY.md)
+ * [Emily](Documentation/EMILY_COMMANDS.md)
+ * [Swagger](Documentation/SWAGGER.md)
+ * [Middleware](Documentation/AUTHENTICATION_MIDDLEWARE.md)
+ * [Database](Documentation/DATABASE.md)
 
-The basic variables used for the configuration are in a .env-example file. You must create this file before running the project.
-
-## Running:
-
-To run the project, run the following command:
-
-```bash
-npm run dev
-```
 
 ## Updates:
 
-Small updates will be uploaded to this template every week. If you have any suggestions to make the template more scalable, please feel free to share them.
-
-> [!NOTE]
->
->In the folder **Documentation** you will find the md files with the updates that I am making in the corresponding commits that I will upload.
+In the folder **Documentation** you will find the md files with the updates that I am making in the corresponding commits that I will upload.
 
 ## Versions
-* [VERSION 1.0.0](V1/v1.md)
-* [VERSION 2.0.0](V2/v2.md)
+* [Version 1.0.0](Documentation/V1/v1.md)
+* [Version 2.0.0](Documentation/V2/v2.md)
 
 ## License
 The template-fastify is licensed under the [MIT License](LICENSE)
+
+-->

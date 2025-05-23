@@ -4,5 +4,99 @@
     ],
     "editor.fontSize": 14,
     "IDX.aI.enableInlineCompletion": true,
-    "IDX.aI.enableCodebaseIndexing": true
+    "IDX.aI.enableCodebaseIndexing": true,
+		"editor.fontLigatures": true,
+  "editor.tokenColorCustomizations": {
+    "comments": "#1379ff"
+  },
+  "workbench.colorCustomizations": {
+    "statusBar.background": "#4274ff",
+    "statusBar.foreground": "#f5f5f5",
+    "titleBar.activeForeground": "#ffffff",
+    "activityBar.foreground": "#b60000",
+    "activityBar.inactiveForeground": "#ffffff"
+  },
+  "editor.fontFamily": "'CaskaydiaCove Nerd Font'",
+  "editor.minimap.maxColumn": 80,
+  "cSpell.language": "en,es",
+  "editor.suggestSelection": "first",
+  "cSpell.userWords": [
+    "endforeach",
+    "endsection",
+    "integrants",
+    "Interconsulta",
+    "jquery",
+    "Laravel",
+    "openapi",
+    "Parqueaderos",
+    "spanish",
+    "webp"
+  ],
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.wordWrap": "on",
+  "editor.accessibilitySupport": "off",
+  "files.autoSave": "afterDelay",
+  "[typescript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "[vue]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
+  // SETTINGS OF THE EDITOR
+  "workbench.editor.showTabs": "single",
+  "editor.minimap.enabled": false,
+  "editor.scrollbar.vertical": "auto",
+  "editor.scrollbar.verticalScrollbarSize": 5,
+  "editor.overviewRulerBorder": false,
+  "editor.guides.indentation": false,
+  "editor.glyphMargin": false,
+  "workbench.sideBar.location": "right",
+  "editor.guides.bracketPairs": true,
+  "terminal.integrated.env.windows": {},
+  "[php]": {
+    "editor.defaultFormatter": "bmewburn.vscode-intelephense-client"
+  },
+  "notebook.stickyScroll.enabled": true,
+  "workbench.layoutControl.enabled": false,
+  "window.commandCenter": false,
+  "editor.linkedEditing": true,
+  "editor.fontSize": 13,
+  "git.autofetch": true,
+  "editor.inlineSuggest.showToolbar": "onHover",
+  "editor.cursorBlinking": "expand",
+  "editor.stickyScroll.enabled": false,
+  "terminal.integrated.stickyScroll.enabled": true,
+  "editor.formatOnSave": true,
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "workbench.colorTheme": "Andromeda",
+  "workbench.iconTheme": "material-icon-theme",
+  "terminal.integrated.localEchoLatencyThreshold": -1,
+  "terminal.integrated.localEchoEnabled": "off",
+  "terminal.integrated.fontSize": 13,
+  "workbench.startupEditor": "none",
+  "editor.fontWeight": "normal",
+  "editor.lineHeight": 1.5,
+  "editor.letterSpacing": 0,
+  "debug.console.fontSize": 13,
+  "workbench.preferredDarkColorTheme": "Andromeda",
+  "workbench.preferredLightColorTheme": "Monospace Light",
+  "window.autoDetectColorScheme": true,
+  "inlineChat.mode": "preview"
 }
