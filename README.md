@@ -1,6 +1,6 @@
 # Plantilla de Fastify y Swagger
 
-# Descripción:
+## Descripción:
 
 Esta es una plantilla básica para proyectos que usan Fastify. Incluye una configuración básica con Swagger para facilitar la documentación de los endpoints en una API REST y hacer que los archivos de rutas sean más fáciles de leer. También se ha configurado un pequeño middleware para la autenticación utilizando una clave de API en los endpoints.
 
