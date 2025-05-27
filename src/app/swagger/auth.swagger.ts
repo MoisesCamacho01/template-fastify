@@ -1,9 +1,9 @@
 import * as fs from "fs-extra";
 import { EntitySwaggerRepository } from "@core/swagger/entitySwagger.repository";
 
-export class <Entity>Swagger implements EntitySwaggerRepository {
+export class AuthSwagger implements EntitySwaggerRepository {
 
-    public entity:string = '<Entity>';
+    public entity:string = 'Auth';
 		public get: any;
 		public post: any;
 		public patch: any;
@@ -26,11 +26,14 @@ export class <Entity>Swagger implements EntitySwaggerRepository {
 		}
 
     public body = async ():Promise<Record<string, unknown>> => {
-      return <body>
+      return {
+				email : { type: 'string' },
+				password : { type: 'string' }
+			};
     }
 
     public required = async ():Promise<string[]> => {
-      return <required>
+      return ['email','password'];
     }
 
 		private readonly swaggerGet = async () => {

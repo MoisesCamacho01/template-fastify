@@ -1,30 +1,21 @@
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
 import type { FastifyInstance } from "fastify";
 
-import { UsersController } from "@controllers/users.controller";
-import { Swagger } from "@core/swagger/swagger";
-import { auth } from "@core/middleware/middleware";
+import { UserController } from "@src/app/controllers/user.controller";
 import { UserSwagger } from "@sw/user.swagger";
+import { UsersModel } from "@src/app/models/users.model";
 
-export default async function userRoutes(route: FastifyInstance, options: any, done: () => void) {
-	
-	const userSwagger: UserSwagger = new UserSwagger();
-	const sw: Swagger = new Swagger();
-	await sw.entity(userSwagger);
-	const users: UsersController = new UsersController();
+export default async function userRoutes(route: FastifyInstance, options: any) {
 
-	route.get(`/`, { preHandler: [auth], schema: sw.get.schema }, users.list);
+	const sw: UserSwagger = new UserSwagger();
+	await sw.loadSchema();
+	const users: UsersModel = new UsersModel(route);
+	const user: UserController = new UserController(users);
 
-	// route.get(`/:id`, { preHandler: [auth], schema: sw.get.schema }, users.find);
+	await route.get(`/`, { onRequest: [route.jwtAuth], schema: sw.get.schema }, user.list);
+	await route.get('/:id', { onRequest: [route.jwtAuth], schema: sw.find.schema }, user.find)
+	await route.post(`/create`, { onRequest: [route.jwtAuth], schema: sw.post.schema }, user.create);
+	await route.patch(`/patch/:id`, { onRequest: [route.jwtAuth], schema: sw.patch.schema }, user.patch);
+	await route.delete(`/delete/:id`, { onRequest: [route.jwtAuth], schema: sw.del.schema }, user.delete);
 
-	route.post(`/create`, sw.post, users.create);
-	
-	route.put(`/put/:id`, sw.put, users.update);
-
-	route.patch(`/patch/:id`, sw.patch, users.patch);
-	
-	route.delete(`/delete/:id`, sw.del, users.delete);
-
-	done();
 }
-

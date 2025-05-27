@@ -79,14 +79,14 @@ export default (program: Command) => {
                 repeat = other.otherField
                 createEntity = (other.otherField === undefined || other.otherField) ? false : true;
                 console.log("");
-                
+
             } while (repeat);
 
             if(createEntity){
                 let pathTemplate = path.join(__dirname, '../../../templates/entitySwagger.txt')
-                
-                console.log("fields :", fields);            
-                
+
+                console.log("fields :", fields);
+
                 fs.readFile(pathTemplate, 'utf-8', (err, data) => {
                     if (err) {
                         console.error('Error reading file:', err);
@@ -94,9 +94,9 @@ export default (program: Command) => {
                     }
 
                     required = fields.filter(field => field.required);
-                    
+
                     let modifiedData:string = '';
-                  
+
                     modifiedData = data.replace(/<Entity>/g, validate.capitalizeFirstLetter(validate.toCamelCase(entity.name)));
 
                     let fieldBody:string = '{\n';
@@ -127,15 +127,15 @@ export default (program: Command) => {
 
                     fieldBody += '\t\t};';
                     fieldRequired += '];';
-                    
+
                     modifiedData = modifiedData.replace(/<body>/g, fieldBody);
                     modifiedData = modifiedData.replace(/<required>/g, fieldRequired);
 
                     // Path to save the file as .ts
-                    let nameFile = validate.capitalizeFirstLetter(validate.toCamelCase(entity.name));
+                    let nameFile = validate.toCamelCase(entity.name);
 
-                    const newFilePath = path.join(__dirname, `../../../../src/app/swagger/${nameFile}Swagger.ts`);
-                
+                    const newFilePath = path.join(__dirname, `../../../../src/app/swagger/${nameFile}.swagger.ts`);
+
                     // Save the modified file as a TypeScript file
                     fs.writeFile(newFilePath, modifiedData, 'utf-8', (err) => {
                         if (err) {

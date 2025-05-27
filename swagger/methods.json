@@ -5,12 +5,16 @@
 			"tags": [
 				"users"
 			],
+			"operationId": "",
 			"summary": "Get all users",
 			"security": [
-				{
-					"apiKey": []
-				}
+				{ "bearerAuth": [] }
 			],
+			"params": {
+				"type": "object",
+				"required": [],
+				"properties": {}
+			},
 			"response": {}
 		}
 	},
@@ -20,11 +24,10 @@
 			"tags": [
 				"users"
 			],
+			"operationId": "",
 			"summary": "Create a user",
 			"security": [
-				{
-					"apiKey": []
-				}
+				{ "bearerAuth": [] }
 			],
 			"body": {
 				"type": "object",
@@ -40,11 +43,10 @@
 			"tags": [
 				"users"
 			],
+			"operationId": "",
 			"summary": "Update a user",
 			"security": [
-				{
-					"apiKey": []
-				}
+				{ "bearerAuth": [] }
 			],
 			"params": {
 				"type": "object",
@@ -65,11 +67,10 @@
 			"tags": [
 				"users"
 			],
+			"operationId": "",
 			"summary": "Update a user",
 			"security": [
-				{
-					"apiKey": []
-				}
+				{ "bearerAuth": [] }
 			],
 			"params": {
 				"type": "object",
@@ -90,11 +91,10 @@
 			"tags": [
 				"users"
 			],
+			"operationId": "",
 			"summary": "Delete a user",
 			"security": [
-				{
-					"apiKey": []
-				}
+				{ "bearerAuth": [] }
 			],
 			"params": {
 				"type": "object",

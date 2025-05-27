@@ -1,10 +1,10 @@
 import { FastifyInstance } from 'fastify';
 
 import userRoutes from './routes/user.routes';
+import authRoutes from './routes/auth.routes';
 
-export default function routesV1(route: FastifyInstance, options: any, done: () => void) {
+export default async function routesV1(route: FastifyInstance, options: any) {
 
-    route.register(userRoutes, { prefix: 'users' } );
-
-    done();
+    await route.register(authRoutes, { prefix: 'auth' } );
+    await route.register(userRoutes, { prefix: 'users' } );
 }
