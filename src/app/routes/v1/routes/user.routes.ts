@@ -12,10 +12,12 @@ export default async function userRoutes(route: FastifyInstance, options: any) {
 	const users: UsersModel = new UsersModel(route);
 	const user: UserController = new UserController(users);
 
-	await route.get(`/`, { onRequest: [route.jwtAuth], schema: sw.get.schema }, user.list);
-	await route.get('/:id', { onRequest: [route.jwtAuth], schema: sw.find.schema }, user.find)
-	await route.post(`/create`, { onRequest: [route.jwtAuth], schema: sw.post.schema }, user.create);
-	await route.patch(`/patch/:id`, { onRequest: [route.jwtAuth], schema: sw.patch.schema }, user.patch);
-	await route.delete(`/delete/:id`, { onRequest: [route.jwtAuth], schema: sw.del.schema }, user.delete);
+	await route.addHook('onRequest', route.jwtAuth);
+
+	await route.get(`/`, { schema: sw.get.schema }, user.list);
+	await route.get('/:id', { schema: sw.find.schema }, user.find)
+	await route.post(`/create`, { schema: sw.post.schema }, user.create);
+	await route.patch(`/patch/:id`, { schema: sw.patch.schema }, user.patch);
+	await route.delete(`/delete/:id`, { schema: sw.del.schema }, user.delete);
 
 }

@@ -13,14 +13,15 @@ Esta es una plantilla básica para proyectos que usan Fastify. Incluye una confi
 * [Swagger](Documentation/SWAGGER.md)
 * [Middleware](Documentation/AUTHENTICATION_MIDDLEWARE.md)
 * [Base de Datos](Documentation/DATABASE.md)
+    * [PostgreSQL](Documentation/POSTGRES_METHODS.md) v2.0.0
 
 ## Actualizaciones:
 
 En la carpeta Documentation encontrarás los archivos .md con las actualizaciones que iré realizando en los commits correspondientes que subiré.
 
 ## Versiones
-* [Versión 1.0.0](Documentation/V1/v1.md)
-* [Versión 2.0.0](Documentation/V2/v2.md)
+* [Versión 1.0.0](https://github.com/MoisesCamacho01/template-fastify/tree/v1)
+* [Versión 2.0.0](https://github.com/MoisesCamacho01/template-fastify/tree/v2.0.0)
 
 ## Licencia
 La plantilla fastify-template está licenciada bajo la Licencia MIT.

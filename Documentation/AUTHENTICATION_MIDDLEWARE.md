@@ -1,21 +1,18 @@
 # Middleware de Autenticación
 
-Este template incluye un middleware de autenticación simple basado en API Keys. Su propósito principal es proteger rutas específicas de tu aplicación, asegurando que solo las solicitudes que presenten una clave válida puedan acceder a ellas.
+Este template incluye un middleware de autenticación que utiliza JSON Web Tokens (JWT). Su propósito principal es proteger rutas específicas de tu aplicación, asegurando que solo las solicitudes que presenten un token JWT válido puedan acceder a ellas.
 
 ## Implementación
 
-El middleware verifica la presencia y validez de una API Key en cada solicitud a las rutas donde se aplica. Si la API Key es válida, la solicitud procede; de lo contrario, se rechaza con un error de autenticación.
+El middleware verifica la presencia y validez de un token JWT en el encabezado `Authorization` de cada solicitud a las rutas donde se aplica. Si el token JWT es válido y no ha expirado, la solicitud procede; de lo contrario, se rechaza con un error de autenticación.
 
-## Configuración de la API Key
+## Obtención del JWT
 
-La API Key que el middleware utiliza para validar las solicitudes se configura a través de una variable de entorno.
+Para obtener un token JWT, el cliente debe autenticarse a través del endpoint de login. En este template, existe un endpoint de login de ejemplo donde puedes autenticarte utilizando cualquier dirección de correo electrónico y la contraseña `12345`.
 
-1.  Asegúrate de tener un archivo `.env` en la raíz de tu proyecto. Si no lo tienes, puedes crearlo basándote en el archivo `.env-example`.
-2.  Define la variable de entorno para tu API Key en el archivo `.env`. Por convención, podrías usar un nombre como `API_KEY` o `AUTH_API_KEY`.
-```
-dotenv
-    API_KEY=tu_clave_secreta_aqui
-    
+Archivo `.env` en la raíz de tu proyecto.
+```dotenv
+    SECRET_JWT=tu_clave_secreta_aqui
 ```
 Reemplaza `tu_clave_secreta_aqui` con la clave que deseas utilizar. Esta clave debe ser mantenida en secreto y no debe ser compartida públicamente.
 
@@ -23,15 +20,12 @@ Reemplaza `tu_clave_secreta_aqui` con la clave que deseas utilizar. Esta clave d
 
 ## Aplicar el Middleware a Rutas
 
-Para proteger una ruta específica con este middleware, debes aplicarlo en la definición de la ruta o en un grupo de rutas. La forma exacta de aplicarlo dependerá de cómo esté estructurada la aplicación Fastify en este template, pero generalmente implica registrar el middleware (como un plugin o preHandler) antes de definir la ruta o en el ámbito del router.
+Para proteger una ruta específica con este middleware, debes aplicarlo en la definición de la ruta o en un grupo de rutas. La forma exacta de aplicarlo dependerá de cómo esté estructurada la aplicación Fastify en este template, pero generalmente implica registrar el middleware (como un plugin u onRequest) antes de definir la ruta o en el ámbito del router.
 
 Busca cómo se registran los middlewares en los archivos de rutas (por ejemplo, en `src/app/routes/v1/routes/user.routes.ts`). Deberías ver algo similar a:
 ``` typescript
-// Ejemplo conceptual (la implementación exacta puede variar)
-import { authMiddleware } from '../../../core/middleware/middleware'; // Ruta de ejemplo
-
 const userRoutes: FastifyPluginAsync = async (fastify) => {
-  fastify.addHook('preHandler', authMiddleware); // Aplicar el middleware a todas las rutas en este plugin/archivo
+  fastify.addHook('onRequest', route.jwtAuth); 
 
   fastify.get('/protected-resource', async (request, reply) => {
     // Esta ruta ahora está protegida por el middleware de autenticación
@@ -40,18 +34,38 @@ const userRoutes: FastifyPluginAsync = async (fastify) => {
 
   // Otras rutas sin el hook 'preHandler' explícito en este nivel no estarían protegidas por este middleware
 };
+
+export default async function userRoutes(route: FastifyInstance, options: any) {
+
+	const sw: UserSwagger = new UserSwagger();
+	await sw.loadSchema();
+	const users: UsersModel = new UsersModel(route);
+	const user: UserController = new UserController(users);
+
+	await route.addHook('onRequest', route.jwtAuth); // Aplicar el middleware a todas las rutas en esta función
+
+  // Rutas protegidas por el middleware de autenticación
+	await route.get('/', { schema: sw.get.schema }, user.list);
+	await route.get('/:id', { schema: sw.find.schema }, user.find)
+	await route.post('/create', { schema: sw.post.schema }, user.create);
+	await route.patch('/patch/:id', { schema: sw.patch.schema }, user.patch);
+	await route.delete('/delete/:id', { schema: sw.del.schema }, user.delete);
+
+}
 ```
 O podrías aplicarlo directamente a rutas individuales:
 ``` typescript
-// Ejemplo conceptual (la implementación exacta puede variar)
-import { authMiddleware } from '../../../core/middleware/middleware'; // Ruta de ejemplo
 
-fastify.get('/another-protected-route', { preHandler: authMiddleware }, async (request, reply) => {
+await route.get('/', {onRequest: route.jwtAuth, schema: sw.get.schema }, 
+async (request, reply) => {
   // Esta ruta individual está protegida
   return { message: 'Otro recurso protegido' };
 });
+
 ```
-Consulta el código fuente en `src/core/middleware/middleware.ts` y en los archivos de rutas para entender la implementación específica en este template.
+> [!IMPORTANT]
+>
+> El middleware de autenticación es registrado en fastify como un plugin para poder usarlo como parte de FastifyInstance.
 
 ## Comportamiento para Solicitudes No Autenticadas
 
