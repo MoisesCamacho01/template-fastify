@@ -3,7 +3,7 @@ import { EntitySwaggerRepository } from "@core/swagger/entitySwagger.repository"
 
 export class <Entity>Swagger implements EntitySwaggerRepository {
 
-    public entity:string = '<Entity>';
+    public entity:string = '<GroupEntity>';
 		public get: any;
 		public post: any;
 		public patch: any;
@@ -12,8 +12,8 @@ export class <Entity>Swagger implements EntitySwaggerRepository {
 		public find: any;
 
     constructor(
-			private readonly methods: object = JSON.parse(fs.readFileSync(`${__dirname}/../../../swagger/methods.json`, 'utf8')),
-			private readonly httpCode: object = JSON.parse(fs.readFileSync(`${__dirname}/../../../swagger/httpCode.json`, 'utf8')),
+			private readonly methods: object = JSON.parse(fs.readFileSync(process.cwd()+`/swagger/methods.json`, 'utf8')),
+			private readonly httpCode: object = JSON.parse(fs.readFileSync(process.cwd()+`/swagger/httpCode.json`, 'utf8')),
 		){}
 
 		public loadSchema = async () => {
@@ -67,7 +67,7 @@ export class <Entity>Swagger implements EntitySwaggerRepository {
 
 			let httpCode: any = JSON.parse(JSON.stringify(this.httpCode));
 			let {post} = JSON.parse(JSON.stringify(this.methods));
-
+			<filePost>
 			post.schema.description = `Create ${this.entity}`;
 			post.schema.tags = [`${this.entity}`];
 			post.schema.operationId = `create${this.entity}`
@@ -81,7 +81,7 @@ export class <Entity>Swagger implements EntitySwaggerRepository {
 		private readonly swaggerPut = async () => {
 			let httpCode: any = JSON.parse(JSON.stringify(this.httpCode));
 			let {put} = JSON.parse(JSON.stringify(this.methods));
-
+			<filePut>
 			put.schema.description = `Put ${this.entity}`;
 			put.schema.tags = [`${this.entity}`];
 			put.schema.operationId = `put${this.entity}`
@@ -101,7 +101,7 @@ export class <Entity>Swagger implements EntitySwaggerRepository {
 
 			let httpCode: any = JSON.parse(JSON.stringify(this.httpCode));
 			let {patch} = JSON.parse(JSON.stringify(this.methods));
-
+			<filePatch>
 			patch.schema.description = `Patch ${this.entity}`;
 			patch.schema.tags = [`${this.entity}`];
 			patch.schema.operationId = `update${this.entity}`

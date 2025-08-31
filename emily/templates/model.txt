@@ -1,0 +1,128 @@
+import { Model } from '@src/core/http/model';
+import type { FastifyInstance } from "fastify";
+import { MessageInterface } from '@src/core/database/postgresql/variableTypes.interfaces';
+import * as <NameInterface>Interface from '@interfaces/<nameInterface>.interface';
+
+export class <NameModel>Model extends Model{
+	constructor(
+		app: FastifyInstance
+	) {
+		super(app);
+		this.table = '<TableName>'
+	}
+
+	public list = async () => {
+		try {
+
+			this.select();
+			let getList: MessageInterface = await this.execute();
+
+			if (getList.error) {
+				console.log({
+					Insert_user: getList.message
+				});
+				getList.message = "Error retrieving data";
+			}
+
+			return getList;
+
+		} catch (error) {
+			return this.getResponse({error:true, message:error});
+		}
+	}
+
+	public find = async (id:string) => {
+		try {
+			this.select('*');
+			this.where([
+				{
+					field:'id',
+					operator: '=',
+					value: id
+				}
+			])
+
+			let getFind:MessageInterface = await this.execute();
+
+			if(getFind.error){
+				console.log({
+					consult_user: getFind.message
+				});
+				getFind.message = "Error retrieving data";
+			}
+
+			return getFind;
+		}catch(error){
+			return this.getResponse({error:true, message:error})
+		}
+	}
+
+	public create = async (body:<NameInterface>Interface.create) => {
+		try{
+
+			let insert: MessageInterface = await this.insert(body);
+
+			if (insert.error) {
+				console.log({
+					create: insert.message
+				});
+				insert.message = "Error in insertion of data";
+			}
+
+			return insert;
+		}catch(error){
+			return this.getResponse({error:true, message:error})
+		}
+	}
+
+	public patch = async (body:<NameInterface>Interface.update, id:string) =>{
+		try {
+			this.update(body);
+			this.where([
+				{
+					field:'id',
+					operator: '=',
+					value: id
+				}
+			]);
+
+			let update: MessageInterface = await this.execute();
+
+			if(update.error){
+				console.log({
+					update: update.message
+				});
+				update.message = "Error in update of data";
+			}
+			return update
+		} catch (error) {
+			return this.getResponse({error:true, message:error})
+		}
+	}
+
+	public del = async (id:string) => {
+		try {
+			this.delete();
+			this.where([
+				{
+					field:'id',
+					operator: '=',
+					value: id
+				}
+			]);
+			let deleteRegister:MessageInterface = await this.execute();
+
+			if(deleteRegister.error){
+				console.log({
+					delete: deleteRegister.message
+				});
+				deleteRegister.message = "Error in update of data";
+			}
+
+			return deleteRegister;
+
+		} catch (error) {
+			return this.getResponse({error:true, message:error})
+		}
+	}
+}

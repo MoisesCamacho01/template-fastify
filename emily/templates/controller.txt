@@ -1,0 +1,118 @@
+import { FastifyReply as Response, FastifyRequest as Request } from "fastify"
+import * as <NameInterface>Interface from "@interfaces/<nameInterface>.interface"
+import { <NameModel>Model } from "@src/app/models/<nameModel>.model"
+import { MessageInterface } from "@src/core/database/postgresql/variableTypes.interfaces";
+
+export class <NameController>Controller {
+	private readonly model: <NameModel>Model;
+	constructor(
+		model: <NameModel>Model,
+	) {
+		this.model = model;
+	}
+
+	public find = async (req: Request, res: Response) => {
+
+		let params = req.params as {id:string}
+		let response:MessageInterface = await this.model.find(params.id);
+		let rows:<NameInterface>Interface.find = response.rows as <NameInterface>Interface.find;
+
+		if(!response.error){
+			return res.status(200).send({
+				ok: true,
+				message: 'Registers recovered successfully',
+				body: rows
+			});
+		}
+
+		return res.status(400).send({
+			ok: false,
+			message: response.message,
+			body: {}
+		});
+	}
+
+	public list = async (req: Request, res: Response) => {
+
+		let listUsers:MessageInterface = await this.model.list();
+
+		let rows:<NameInterface>Interface.list[] = listUsers.rows as <NameInterface>Interface.list[];
+
+		if(!listUsers.error){
+			return res.status(200).send({
+				ok: true,
+				message: 'Registers all recovered successfully',
+				body: rows
+			})
+		}
+
+		return res.status(400).send({
+			ok: false,
+			message: listUsers.message
+		});
+
+	}
+
+	public create = async (req: Request, res: Response) => {
+
+		let body: any = req.body
+
+		let user: <NameInterface>Interface.create = {
+			name: body.name
+		}
+
+		let createUser: MessageInterface = await this.model.create(user);
+
+		if (!createUser.error) {
+			return res.status(200).send({
+				ok: true,
+				message: 'Register created successfully',
+				body: createUser
+			});
+		}
+
+		return res.status(400).send({
+			ok: false,
+			message: createUser.message
+		});
+	}
+
+	public patch = async (req: Request, res: Response) => {
+
+		let body:<NameInterface>Interface.update = req.body as <NameInterface>Interface.update
+		let params = req.params as {id:string}
+
+		let update:MessageInterface = await this.model.patch(body, params.id);
+
+		if(!update.error){
+			return res.status(200).send({
+				ok: true,
+				message: 'Register updated successfully',
+			});
+		}
+
+		return res.status(400).send({
+			ok: false,
+			message: update.message
+		})
+	}
+
+	public delete = async (req: Request, res: Response) => {
+
+		let params = req.params as {id:string}
+
+		let deleteRegister:MessageInterface = await this.model.del(params.id);
+
+		if(!deleteRegister.error){
+			return res.status(200).send({
+				ok: true,
+				message: 'Register delete successfully',
+			});
+		}
+
+		return res.status(400).send({
+			ok: false,
+			message: deleteRegister.message
+		})
+	}
+}

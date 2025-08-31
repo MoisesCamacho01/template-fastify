@@ -1,5 +1,6 @@
 export interface fieldInterface{
     name: string,
     type: string,
-    required: boolean
+    required: boolean,
+    typesArray?: Array<string>
 }

@@ -33,7 +33,7 @@ export class UserSwagger implements EntitySwaggerRepository {
 	}
 
 	public required = async (): Promise<string[]> => {
-		return ['name','email', 'password'];
+		return ['name','email','password'];
 	}
 
 	private readonly swaggerGet = async () => {

@@ -1,0 +1,22 @@
+import type { FastifyInstance } from "fastify";
+
+import { <Controller>Controller } from "@src/app/controllers/<controller>.controller";
+import { <Swagger>Swagger } from "@sw/<swagger>.swagger";
+import { <Model>Model } from "@src/app/models/<model>.model";
+
+export default async function <nameRoute>Routes(route: FastifyInstance, options: any) {
+
+	const sw: <Swagger>Swagger = new <Swagger>Swagger();
+	await sw.loadSchema();
+	const <model>: <Model>Model = new <Model>Model(route);
+	const <controller>: <Controller>Controller = new <Controller>Controller(<model>);
+
+	await route.addHook('onRequest', route.jwtAuth);
+
+	await route.get(`/`, { schema: sw.get.schema }, <controller>.list);
+	await route.get('/:id', { schema: sw.find.schema }, <controller>.find)
+	await route.post(`/create`, { schema: sw.post.schema }, <controller>.create);
+	await route.patch(`/patch/:id`, { schema: sw.patch.schema }, <controller>.patch);
+	await route.delete(`/delete/:id`, { schema: sw.del.schema }, <controller>.delete);
+
+}

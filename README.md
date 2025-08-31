@@ -1,4 +1,5 @@
 # Plantilla de Fastify y Swagger
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/MoisesCamacho01/template-fastify)
 
 ## Descripción:
 
@@ -20,7 +21,7 @@ Esta es una plantilla básica para proyectos que usan Fastify. Incluye una confi
 En la carpeta Documentation encontrarás los archivos .md con las actualizaciones que iré realizando en los commits correspondientes que subiré.
 
 ## Versiones
-* [Versión 1.0.0](https://github.com/MoisesCamacho01/template-fastify/tree/v1)
+* [Versión 1.0.0](https://github.com/MoisesCamacho01/template-fastify/tree/v1.0.0)
 * [Versión 2.0.0](https://github.com/MoisesCamacho01/template-fastify/tree/v2.0.0)
 
 ## Licencia
