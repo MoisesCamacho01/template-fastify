@@ -1,44 +1,32 @@
-import Fastify, { FastifyInstance } from "fastify";
+import Fastify, { type FastifyInstance } from "fastify";
 import routesV1 from "./routes/v1/index.routes";
 import fastifySwagger from "@fastify/swagger";
 import fastifySwaggerUi from "@fastify/swagger-ui";
-import fastifyMongodb from "@fastify/mongodb";
-import fastifyPostgres from "@fastify/postgres";
 import cors from '@fastify/cors'
 import { Swagger } from "@core/swagger/swagger";
-import jwtAuth from "@src/plugins/jwtAuth";
+import { registerEndpointResponseLogger } from "@core/logs/clickhouse/endpoint-response-logger";
 
 const app: FastifyInstance = Fastify({
 	logger: true
 });
 
-if (process.env.MONGO_URL !== ''){
-	app.register(fastifyMongodb, {
-		forceClose: true,
-		url: process.env.MONGO_URL
-	})
-}
-
-if(process.env.POSTGRES_URL !== ''){
-	app.register(fastifyPostgres, {
-		connectionString: process.env.POSTGRES_URL
-	})
-}
-
 app.register(cors, {
 	// put your options here
 	origin: "*",
-	methods: ['GET', 'POST', 'PUT', 'PATH', 'DELETE']
+	methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE']
 })
 
+registerEndpointResponseLogger(app);
+
 const sw: Swagger = new Swagger();
-sw.getOpenApi(['v1'], (data:any) => {
+sw.getOpenApi(['v1'], (data) => {
+
 	app.register(fastifySwagger, {
 		openapi: data
 	});
 
 	app.register(fastifySwaggerUi, {
-		routePrefix: "/",
+		routePrefix: "/doc",
 		uiConfig: {
 			docExpansion: "list",
 			deepLinking: false,
@@ -53,7 +41,7 @@ sw.getOpenApi(['v1'], (data:any) => {
 		},
 		staticCSP: true,
 		transformStaticCSP: header => header,
-		transformSpecification: (swaggerObject, request, reply) => {
+		transformSpecification: (swaggerObject) => {
 			return swaggerObject;
 		},
 		transformSpecificationClone: true,
@@ -71,10 +59,10 @@ sw.getOpenApi(['v1'], (data:any) => {
 		},
 	});
 
-	app.register(jwtAuth);
-
 	// routes v1
-	app.register(routesV1, { prefix: 'v1' })
+	app.register(routesV1, { prefix: "/api/v1" });
 });
 
 export default app;
+
+

@@ -1,0 +1,8 @@
+{
+  "watch": ["./"],
+  "ext": "ts",
+  "ignore": ["node_modules"],
+  "exec": "tsx src/index.ts",
+  "legacyWatch": true,
+  "interval": 1000
+}

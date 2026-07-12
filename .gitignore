@@ -2,3 +2,6 @@
 .env
 /build
 /public
+/app/interfaces
+oidc_private.pem
+oidc_public.pem

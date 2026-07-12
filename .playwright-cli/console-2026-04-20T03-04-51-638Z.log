@@ -1,0 +1,5 @@
+[     345ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:4000/favicon.ico:0
+[  142367ms] [ERROR] Failed to load resource: the server responded with a status of 400 (Bad Request) @ http://localhost:4000/api/v1/addresses/create:0
+[  142372ms] [ERROR] Failed to load resource: the server responded with a status of 400 (Bad Request) @ http://localhost:4000/api/v1/addresses/put/undefined:0
+[  142377ms] [ERROR] Failed to load resource: the server responded with a status of 400 (Bad Request) @ http://localhost:4000/api/v1/addresses/patch/undefined:0
+[  142382ms] [ERROR] Failed to load resource: the server responded with a status of 400 (Bad Request) @ http://localhost:4000/api/v1/addresses/delete/undefined:0

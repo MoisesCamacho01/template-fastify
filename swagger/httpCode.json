@@ -10,11 +10,21 @@
 			}
 		}
 	},
+	"201": {
+		"description": "Created response",
+		"type": "object",
+		"properties": {
+			"ok": { "type": "boolean" },
+			"message": { "type": "string" },
+			"body": {
+				"oneOf": [{}]
+			}
+		}
+	},
 	"401": {
 		"description": "Default response",
 		"type": "object",
 		"properties": {
-			"ok": { "type": "boolean" },
 			"message": { "type": "string" }
 		}
 	},
@@ -23,7 +33,10 @@
 		"type": "object",
 		"properties": {
 			"ok": { "type": "boolean" },
-			"message": { "type": "string" }
+			"message": { "type": "string" },
+			"body": {
+				"oneOf": [{}]
+			}
 		}
 	},
 	"404": {
@@ -31,7 +44,21 @@
 		"type": "object",
 		"properties": {
 			"ok": { "type": "boolean" },
-			"message": { "type": "string" }
+			"message": { "type": "string" },
+			"body": {
+				"oneOf": [{}]
+			}
+		}
+	},
+	"409": {
+		"description": "Conflict exception",
+		"type": "object",
+		"properties": {
+			"ok": { "type": "boolean" },
+			"message": { "type": "string" },
+			"body": {
+				"oneOf": [{}]
+			}
 		}
 	},
 	"422": {
@@ -39,7 +66,32 @@
 		"type": "object",
 		"properties": {
 			"ok": { "type": "boolean" },
-			"message": { "type": "string" }
+			"message": { "type": "string" },
+			"body": {
+				"oneOf": [{}]
+			}
+		}
+	},
+	"423": {
+		"description": "Temporarily locked",
+		"type": "object",
+		"properties": {
+			"ok": { "type": "boolean" },
+			"message": { "type": "string" },
+			"body": {
+				"oneOf": [{}]
+			}
+		}
+	},
+	"500": {
+		"description": "Unexpected error",
+		"type": "object",
+		"properties": {
+			"ok": { "type": "boolean" },
+			"message": { "type": "string" },
+			"body": {
+				"oneOf": [{}]
+			}
 		}
 	}
 }

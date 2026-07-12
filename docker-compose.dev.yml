@@ -1,0 +1,21 @@
+services:
+  login-api:
+    container_name: login-api
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: login-api:latest
+    env_file:
+      - .env
+    volumes:
+      - .:/app
+      - /app/node_modules
+    ports:
+      - "4000:4000"
+    networks:
+      - dev-net
+    restart: unless-stopped
+
+networks:
+  dev-net:
+    external: true
