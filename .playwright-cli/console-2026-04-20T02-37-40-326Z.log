@@ -1,0 +1,2 @@
+[     340ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:4000/favicon.ico:0
+[  231019ms] [ERROR] Failed to load resource: the server responded with a status of 400 (Bad Request) @ http://localhost:4000/api/v1/users/delete/ae0c5a36-f698-4af6-a1c6-da404925ac34:0

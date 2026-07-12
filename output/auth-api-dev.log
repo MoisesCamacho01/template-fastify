@@ -1,0 +1,123 @@
+
+> fastify@1.0.0 dev
+> nodemon
+
+[33m[nodemon] 3.1.14[39m
+[33m[nodemon] to restart at any time, enter `rs`[39m
+[33m[nodemon] watching path(s): **\*[39m
+[33m[nodemon] watching extensions: ts[39m
+[32m[nodemon] starting `tsx src/index.ts`[39m
+{"level":30,"time":1776660048311,"pid":25516,"hostname":"Moises","msg":"Server listening at http://127.0.0.1:4000"}
+================== This server is listening on port ( 4000 ) ==================
+{"level":30,"time":1776660048311,"pid":25516,"hostname":"Moises","msg":"Server listening at http://192.168.0.104:4000"}
+{"level":30,"time":1776660048311,"pid":25516,"hostname":"Moises","msg":"Server listening at http://192.168.56.1:4000"}
+{"level":30,"time":1776660048311,"pid":25516,"hostname":"Moises","msg":"Server listening at http://172.20.112.1:4000"}
+{"level":30,"time":1776660060944,"pid":25516,"hostname":"Moises","reqId":"req-1","req":{"method":"GET","url":"/api/v1/","host":"localhost:4000","remoteAddress":"127.0.0.1","remotePort":50063},"msg":"incoming request"}
+{"level":30,"time":1776660060947,"pid":25516,"hostname":"Moises","reqId":"req-1","res":{"statusCode":200},"responseTime":2.883199989795685,"msg":"request completed"}
+{"level":30,"time":1776660077238,"pid":25516,"hostname":"Moises","reqId":"req-2","req":{"method":"GET","url":"/doc","host":"localhost:4000","remoteAddress":"127.0.0.1","remotePort":53922},"msg":"incoming request"}
+{"level":30,"time":1776660077239,"pid":25516,"hostname":"Moises","reqId":"req-2","res":{"statusCode":200},"responseTime":0.7977000027894974,"msg":"request completed"}
+{"level":30,"time":1776660077245,"pid":25516,"hostname":"Moises","reqId":"req-3","req":{"method":"GET","url":"/doc/static/swagger-ui.css","host":"localhost:4000","remoteAddress":"127.0.0.1","remotePort":53922},"msg":"incoming request"}
+{"level":30,"time":1776660077246,"pid":25516,"hostname":"Moises","reqId":"req-4","req":{"method":"GET","url":"/doc/static/index.css","host":"localhost:4000","remoteAddress":"127.0.0.1","remotePort":52076},"msg":"incoming request"}
+{"level":30,"time":1776660077247,"pid":25516,"hostname":"Moises","reqId":"req-3","res":{"statusCode":304},"responseTime":2.7150000035762787,"msg":"request completed"}
+{"level":30,"time":1776660077248,"pid":25516,"hostname":"Moises","reqId":"req-4","res":{"statusCode":304},"responseTime":2.742499992251396,"msg":"request completed"}
+{"level":30,"time":1776660077249,"pid":25516,"hostname":"Moises","reqId":"req-5","req":{"method":"GET","url":"/doc/static/swagger-ui-bundle.js","host":"localhost:4000","remoteAddress":"127.0.0.1","remotePort":53922},"msg":"incoming request"}
+{"level":30,"time":1776660077249,"pid":25516,"hostname":"Moises","reqId":"req-6","req":{"method":"GET","url":"/doc/static/swagger-ui-standalone-preset.js","host":"localhost:4000","remoteAddress":"127.0.0.1","remotePort":52076},"msg":"incoming request"}
+{"level":30,"time":1776660077250,"pid":25516,"hostname":"Moises","reqId":"req-5","res":{"statusCode":304},"responseTime":1.1083000004291534,"msg":"request completed"}
+{"level":30,"time":1776660077251,"pid":25516,"hostname":"Moises","reqId":"req-6","res":{"statusCode":304},"responseTime":1.2070000022649765,"msg":"request completed"}
+{"level":30,"time":1776660077251,"pid":25516,"hostname":"Moises","reqId":"req-7","req":{"method":"GET","url":"/doc/static/swagger-initializer.js","host":"localhost:4000","remoteAddress":"127.0.0.1","remotePort":53922},"msg":"incoming request"}
+{"level":30,"time":1776660077251,"pid":25516,"hostname":"Moises","reqId":"req-7","res":{"statusCode":200},"responseTime":0.42260000109672546,"msg":"request completed"}
+{"level":30,"time":1776660077554,"pid":25516,"hostname":"Moises","reqId":"req-8","req":{"method":"GET","url":"/doc/json","host":"localhost:4000","remoteAddress":"127.0.0.1","remotePort":53922},"msg":"incoming request"}
+{"level":30,"time":1776660077561,"pid":25516,"hostname":"Moises","reqId":"req-8","res":{"statusCode":200},"responseTime":7.262700006365776,"msg":"request completed"}
+{"level":30,"time":1776660077574,"pid":25516,"hostname":"Moises","reqId":"req-9","req":{"method":"GET","url":"/doc/static/theme/favicon.png","host":"localhost:4000","remoteAddress":"127.0.0.1","remotePort":53922},"msg":"incoming request"}
+{"level":30,"time":1776660077574,"pid":25516,"hostname":"Moises","reqId":"req-9","res":{"statusCode":200},"responseTime":0.5027999877929688,"msg":"request completed"}
+{"level":30,"time":1776660099445,"pid":25516,"hostname":"Moises","reqId":"req-a","req":{"method":"GET","url":"/doc","host":"localhost:4000","remoteAddress":"127.0.0.1","remotePort":53922},"msg":"incoming request"}
+{"level":30,"time":1776660099446,"pid":25516,"hostname":"Moises","reqId":"req-a","res":{"statusCode":200},"responseTime":0.5235999971628189,"msg":"request completed"}
+{"level":30,"time":1776660099454,"pid":25516,"hostname":"Moises","reqId":"req-b","req":{"method":"GET","url":"/doc/static/swagger-ui.css","host":"localhost:4000","remoteAddress":"127.0.0.1","remotePort":53922},"msg":"incoming request"}
+{"level":30,"time":1776660099455,"pid":25516,"hostname":"Moises","reqId":"req-c","req":{"method":"GET","url":"/doc/static/index.css","host":"localhost:4000","remoteAddress":"127.0.0.1","remotePort":52076},"msg":"incoming request"}
+{"level":30,"time":1776660099455,"pid":25516,"hostname":"Moises","reqId":"req-d","req":{"method":"GET","url":"/doc/static/swagger-ui-bundle.js","host":"localhost:4000","remoteAddress":"127.0.0.1","remotePort":64130},"msg":"incoming request"}
+{"level":30,"time":1776660099455,"pid":25516,"hostname":"Moises","reqId":"req-e","req":{"method":"GET","url":"/doc/static/swagger-ui-standalone-preset.js","host":"localhost:4000","remoteAddress":"127.0.0.1","remotePort":64197},"msg":"incoming request"}
+{"level":30,"time":1776660099456,"pid":25516,"hostname":"Moises","reqId":"req-b","res":{"statusCode":304},"responseTime":1.8122000098228455,"msg":"request completed"}
+{"level":30,"time":1776660099456,"pid":25516,"hostname":"Moises","reqId":"req-c","res":{"statusCode":304},"responseTime":1.8483999967575073,"msg":"request completed"}
+{"level":30,"time":1776660099457,"pid":25516,"hostname":"Moises","reqId":"req-d","res":{"statusCode":304},"responseTime":1.9261000007390976,"msg":"request completed"}
+{"level":30,"time":1776660099457,"pid":25516,"hostname":"Moises","reqId":"req-f","req":{"method":"GET","url":"/doc/static/swagger-initializer.js","host":"localhost:4000","remoteAddress":"127.0.0.1","remotePort":51411},"msg":"incoming request"}
+{"level":30,"time":1776660099457,"pid":25516,"hostname":"Moises","reqId":"req-f","res":{"statusCode":200},"responseTime":0.2953999936580658,"msg":"request completed"}
+{"level":30,"time":1776660099458,"pid":25516,"hostname":"Moises","reqId":"req-e","res":{"statusCode":304},"responseTime":3.3619000017642975,"msg":"request completed"}
+{"level":30,"time":1776660099526,"pid":25516,"hostname":"Moises","reqId":"req-g","req":{"method":"GET","url":"/doc/json","host":"localhost:4000","remoteAddress":"127.0.0.1","remotePort":64197},"msg":"incoming request"}
+{"level":30,"time":1776660099528,"pid":25516,"hostname":"Moises","reqId":"req-g","res":{"statusCode":200},"responseTime":2.1167000085115433,"msg":"request completed"}
+{"level":30,"time":1776660099533,"pid":25516,"hostname":"Moises","reqId":"req-h","req":{"method":"GET","url":"/doc/static/theme/favicon.png","host":"localhost:4000","remoteAddress":"127.0.0.1","remotePort":64197},"msg":"incoming request"}
+{"level":30,"time":1776660099533,"pid":25516,"hostname":"Moises","reqId":"req-h","res":{"statusCode":200},"responseTime":0.3536999970674515,"msg":"request completed"}
+{"level":30,"time":1776660099590,"pid":25516,"hostname":"Moises","reqId":"req-i","req":{"method":"POST","url":"/api/v1/users/create","host":"localhost:4000","remoteAddress":"127.0.0.1","remotePort":64197},"msg":"incoming request"}
+{"level":30,"time":1776660099691,"pid":25516,"hostname":"Moises","reqId":"req-i","res":{"statusCode":201},"responseTime":100.75010000169277,"msg":"request completed"}
+{"level":30,"time":1776660099694,"pid":25516,"hostname":"Moises","reqId":"req-j","req":{"method":"POST","url":"/api/v1/auth/validate-email","host":"localhost:4000","remoteAddress":"127.0.0.1","remotePort":64197},"msg":"incoming request"}
+{"level":30,"time":1776660099712,"pid":25516,"hostname":"Moises","reqId":"req-j","res":{"statusCode":200},"responseTime":17.60709999501705,"msg":"request completed"}
+{"level":30,"time":1776660099713,"pid":25516,"hostname":"Moises","reqId":"req-k","req":{"method":"POST","url":"/api/v1/auth/validate-email","host":"localhost:4000","remoteAddress":"127.0.0.1","remotePort":64197},"msg":"incoming request"}
+{"level":30,"time":1776660099729,"pid":25516,"hostname":"Moises","reqId":"req-k","res":{"statusCode":404},"responseTime":15.282600000500679,"msg":"request completed"}
+{"level":30,"time":1776660099730,"pid":25516,"hostname":"Moises","reqId":"req-l","req":{"method":"POST","url":"/api/v1/auth/forgot-password","host":"localhost:4000","remoteAddress":"127.0.0.1","remotePort":64197},"msg":"incoming request"}
+[fake-email-api] Password recovery email sent to auth-test-1776660099591@example.com
+{"level":30,"time":1776660099746,"pid":25516,"hostname":"Moises","reqId":"req-l","res":{"statusCode":200},"responseTime":15.688299998641014,"msg":"request completed"}
+{"level":30,"time":1776660099749,"pid":25516,"hostname":"Moises","reqId":"req-m","req":{"method":"POST","url":"/api/v1/auth/forgot-password","host":"localhost:4000","remoteAddress":"127.0.0.1","remotePort":64197},"msg":"incoming request"}
+{"level":30,"time":1776660099764,"pid":25516,"hostname":"Moises","reqId":"req-m","res":{"statusCode":404},"responseTime":14.728400006890297,"msg":"request completed"}
+{"level":30,"time":1776660099766,"pid":25516,"hostname":"Moises","reqId":"req-n","req":{"method":"POST","url":"/api/v1/auth/login","host":"localhost:4000","remoteAddress":"127.0.0.1","remotePort":64197},"msg":"incoming request"}
+{"level":30,"time":1776660099893,"pid":25516,"hostname":"Moises","reqId":"req-n","res":{"statusCode":200},"responseTime":127.1756000071764,"msg":"request completed"}
+{"level":30,"time":1776660099895,"pid":25516,"hostname":"Moises","reqId":"req-o","req":{"method":"POST","url":"/api/v1/auth/login","host":"localhost:4000","remoteAddress":"127.0.0.1","remotePort":64197},"msg":"incoming request"}
+{"level":30,"time":1776660099987,"pid":25516,"hostname":"Moises","reqId":"req-o","res":{"statusCode":401},"responseTime":92.30210000276566,"msg":"request completed"}
+{"level":30,"time":1776660099989,"pid":25516,"hostname":"Moises","reqId":"req-p","req":{"method":"POST","url":"/api/v1/auth/login","host":"localhost:4000","remoteAddress":"127.0.0.1","remotePort":64197},"msg":"incoming request"}
+{"level":30,"time":1776660100133,"pid":25516,"hostname":"Moises","reqId":"req-p","res":{"statusCode":200},"responseTime":143.7829999923706,"msg":"request completed"}
+{"level":30,"time":1776660100134,"pid":25516,"hostname":"Moises","reqId":"req-q","req":{"method":"DELETE","url":"/api/v1/users/delete/35d7f3b7-4ad6-40c8-a849-f5acda36d258","host":"localhost:4000","remoteAddress":"127.0.0.1","remotePort":64197},"msg":"incoming request"}
+{"level":30,"time":1776660100153,"pid":25516,"hostname":"Moises","reqId":"req-q","res":{"statusCode":200},"responseTime":18.513199999928474,"msg":"request completed"}
+{"level":30,"time":1776660113002,"pid":25516,"hostname":"Moises","reqId":"req-r","req":{"method":"POST","url":"/api/v1/users/create","host":"localhost:4000","remoteAddress":"127.0.0.1","remotePort":64197},"msg":"incoming request"}
+{"level":30,"time":1776660113088,"pid":25516,"hostname":"Moises","reqId":"req-r","res":{"statusCode":201},"responseTime":85.53379999101162,"msg":"request completed"}
+{"level":30,"time":1776660113090,"pid":25516,"hostname":"Moises","reqId":"req-s","req":{"method":"POST","url":"/api/v1/auth/login","host":"localhost:4000","remoteAddress":"127.0.0.1","remotePort":64197},"msg":"incoming request"}
+{"level":30,"time":1776660113175,"pid":25516,"hostname":"Moises","reqId":"req-s","res":{"statusCode":401},"responseTime":84.74540001153946,"msg":"request completed"}
+{"level":30,"time":1776660113177,"pid":25516,"hostname":"Moises","reqId":"req-t","req":{"method":"POST","url":"/api/v1/auth/login","host":"localhost:4000","remoteAddress":"127.0.0.1","remotePort":64197},"msg":"incoming request"}
+{"level":30,"time":1776660113266,"pid":25516,"hostname":"Moises","reqId":"req-t","res":{"statusCode":401},"responseTime":89.05370000004768,"msg":"request completed"}
+{"level":30,"time":1776660113268,"pid":25516,"hostname":"Moises","reqId":"req-u","req":{"method":"POST","url":"/api/v1/auth/login","host":"localhost:4000","remoteAddress":"127.0.0.1","remotePort":64197},"msg":"incoming request"}
+[fake-email-api] Login attempts alarm sent to auth-lock-1776660113001@example.com
+{"level":30,"time":1776660113358,"pid":25516,"hostname":"Moises","reqId":"req-u","res":{"statusCode":423},"responseTime":89.58689999580383,"msg":"request completed"}
+{"level":30,"time":1776660113360,"pid":25516,"hostname":"Moises","reqId":"req-v","req":{"method":"POST","url":"/api/v1/auth/login","host":"localhost:4000","remoteAddress":"127.0.0.1","remotePort":64197},"msg":"incoming request"}
+[fake-email-api] Login attempts alarm sent to auth-lock-1776660113001@example.com
+{"level":30,"time":1776660113386,"pid":25516,"hostname":"Moises","reqId":"req-v","res":{"statusCode":423},"responseTime":26.042999997735023,"msg":"request completed"}
+{"level":30,"time":1776660113387,"pid":25516,"hostname":"Moises","reqId":"req-w","req":{"method":"DELETE","url":"/api/v1/users/delete/2086daf7-f0d3-4506-94b6-a8b10aa8f491","host":"localhost:4000","remoteAddress":"127.0.0.1","remotePort":64197},"msg":"incoming request"}
+{"level":30,"time":1776660113402,"pid":25516,"hostname":"Moises","reqId":"req-w","res":{"statusCode":200},"responseTime":14.449699997901917,"msg":"request completed"}
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `tsx src/index.ts`[39m
+{"level":30,"time":1776660867309,"pid":12364,"hostname":"Moises","msg":"Server listening at http://127.0.0.1:4000"}
+================== This server is listening on port ( 4000 ) ==================
+{"level":30,"time":1776660867309,"pid":12364,"hostname":"Moises","msg":"Server listening at http://192.168.0.104:4000"}
+{"level":30,"time":1776660867309,"pid":12364,"hostname":"Moises","msg":"Server listening at http://192.168.56.1:4000"}
+{"level":30,"time":1776660867309,"pid":12364,"hostname":"Moises","msg":"Server listening at http://172.20.112.1:4000"}
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `tsx src/index.ts`[39m
+{"level":30,"time":1776660870999,"pid":2660,"hostname":"Moises","msg":"Server listening at http://127.0.0.1:4000"}
+================== This server is listening on port ( 4000 ) ==================
+{"level":30,"time":1776660870999,"pid":2660,"hostname":"Moises","msg":"Server listening at http://192.168.0.104:4000"}
+{"level":30,"time":1776660870999,"pid":2660,"hostname":"Moises","msg":"Server listening at http://192.168.56.1:4000"}
+{"level":30,"time":1776660870999,"pid":2660,"hostname":"Moises","msg":"Server listening at http://172.20.112.1:4000"}
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `tsx src/index.ts`[39m
+{"level":30,"time":1776660874578,"pid":23616,"hostname":"Moises","msg":"Server listening at http://127.0.0.1:4000"}
+================== This server is listening on port ( 4000 ) ==================
+{"level":30,"time":1776660874578,"pid":23616,"hostname":"Moises","msg":"Server listening at http://192.168.0.104:4000"}
+{"level":30,"time":1776660874578,"pid":23616,"hostname":"Moises","msg":"Server listening at http://192.168.56.1:4000"}
+{"level":30,"time":1776660874578,"pid":23616,"hostname":"Moises","msg":"Server listening at http://172.20.112.1:4000"}
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `tsx src/index.ts`[39m
+{"level":30,"time":1776660880396,"pid":21088,"hostname":"Moises","msg":"Server listening at http://127.0.0.1:4000"}
+================== This server is listening on port ( 4000 ) ==================
+{"level":30,"time":1776660880396,"pid":21088,"hostname":"Moises","msg":"Server listening at http://192.168.0.104:4000"}
+{"level":30,"time":1776660880396,"pid":21088,"hostname":"Moises","msg":"Server listening at http://192.168.56.1:4000"}
+{"level":30,"time":1776660880396,"pid":21088,"hostname":"Moises","msg":"Server listening at http://172.20.112.1:4000"}
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `tsx src/index.ts`[39m
+{"level":30,"time":1776660883678,"pid":26284,"hostname":"Moises","msg":"Server listening at http://127.0.0.1:4000"}
+================== This server is listening on port ( 4000 ) ==================
+{"level":30,"time":1776660883678,"pid":26284,"hostname":"Moises","msg":"Server listening at http://192.168.0.104:4000"}
+{"level":30,"time":1776660883678,"pid":26284,"hostname":"Moises","msg":"Server listening at http://192.168.56.1:4000"}
+{"level":30,"time":1776660883678,"pid":26284,"hostname":"Moises","msg":"Server listening at http://172.20.112.1:4000"}
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `tsx src/index.ts`[39m
+{"level":30,"time":1776660889825,"pid":25672,"hostname":"Moises","msg":"Server listening at http://127.0.0.1:4000"}
+================== This server is listening on port ( 4000 ) ==================
+{"level":30,"time":1776660889825,"pid":25672,"hostname":"Moises","msg":"Server listening at http://192.168.0.104:4000"}
+{"level":30,"time":1776660889825,"pid":25672,"hostname":"Moises","msg":"Server listening at http://192.168.56.1:4000"}
+{"level":30,"time":1776660889825,"pid":25672,"hostname":"Moises","msg":"Server listening at http://172.20.112.1:4000"}

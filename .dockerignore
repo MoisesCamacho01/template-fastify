@@ -1,0 +1,12 @@
+﻿node_modules
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+bun.lock
+.git
+.gitignore
+.vscode
+.idx
+.env
+.env.*
+README.md

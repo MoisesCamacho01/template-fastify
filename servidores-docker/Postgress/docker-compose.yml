@@ -1,0 +1,24 @@
+services:
+  db:
+    image: postgres:17.6-alpine3.22
+    container_name: postgress
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${USER}
+      POSTGRES_PASSWORD: ${PASSWORD}
+      POSTGRES_DB: ${NAME}
+    ports:
+      # Mapeo del puerto para acceso directo desde tu HOST (opcional)
+      - "${PORT}:${PORT}" 
+    volumes:
+      # Volumen persistente para que los datos de la DB NO se borren
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - backend
+
+volumes:
+  postgres_data:
+
+networks:
+  backend:
+    driver: bridge
