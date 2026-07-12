@@ -1,111 +1,68 @@
-# Login API
+# Template Fastify 3.0.0
 
-Servicio de autenticacion e identidad construido con Fastify, TypeScript y Drizzle ORM. Este proyecto centraliza registro, login, sesiones, MFA, tenants, roles, permisos, perfiles de usuario y capacidades OIDC/OAuth para otros sistemas.
+Mini-framework para crear APIs con Fastify 5, TypeScript y arquitectura hexagonal. La versión 3.0.0 incluye un módulo de autenticación funcional, persistencia con PostgreSQL/Drizzle, tokens opacos en Redis, auditoría de respuestas en ClickHouse y documentación OpenAPI.
 
-## Que hace este servicio
+> Esta documentación describe exclusivamente el código incluido en la versión 3.0.0. Las carpetas `Update-Diary/` y `sql/db1.sql` son material histórico y no representan la API activa.
 
-- Registra usuarios y companias.
-- Administra login, logout, refresh token y reset de password.
-- Soporta verificacion de email y seleccion de tenant activo.
-- Maneja MFA basado en TOTP.
-- Expone endpoints para tenants, roles, permisos y perfil del usuario autenticado.
-- Publica endpoints OIDC como discovery, JWKS y userinfo.
-- Guarda logs de acceso y respuestas para auditoria.
+## Funcionalidad incluida
 
-## Stack principal
+- Registro de usuarios con contraseñas BCrypt.
+- Inicio de sesión y creación de sesiones de 24 horas.
+- Tokens de acceso opacos de 384 bits almacenados en Redis.
+- Middleware Bearer que comprueba Redis y la sesión de PostgreSQL.
+- Esquema y migraciones PostgreSQL administrados con Drizzle.
+- Registro asíncrono de respuestas y errores en ClickHouse.
+- CORS y Swagger UI.
+- Adaptadores reutilizables para Redis y ClickHouse.
+- Utilidades RS256/JWK disponibles para futuros módulos OIDC.
 
-- Fastify
-- TypeScript
-- Drizzle ORM
-- PostgreSQL
-- Redis
-- ClickHouse
-- Swagger UI
-- Docker Compose
+## Inicio rápido
 
-## Rutas principales
-
-- Base API: `http://localhost:4000/api/v1`
-- Swagger UI: `http://localhost:4000/doc`
-
-## Modulos actuales
-
-| Modulo | Descripcion |
-| --- | --- |
-| `auth` | Registro, login, refresh token, logout, verificacion de email y recuperacion de password. |
-| `mfa` | Configuracion, verificacion y desactivacion de MFA. |
-| `empresa_tenants` | Administracion de tenants y miembros del tenant. |
-| `roles_permisos` | Roles por tenant, permisos y asignacion de roles a usuarios. |
-| `user_profile` | Perfil del usuario autenticado, cambio de password y sesiones. |
-| `users` | CRUD administrativo de usuarios. |
-| `oidc` | Discovery OIDC, JWKS, userinfo, clientes OAuth y logs de autenticacion. |
-
-## Autenticacion
-
-La mayor parte de la API requiere:
-
-```http
-Authorization: Bearer <access-token>
-```
-
-Las rutas publicas actuales son:
-
-- `/api/v1/`
-- `/api/v1/auth/*`
-- `/api/v1/mfa/verify`
-- `/api/v1/.well-known/openid-configuration`
-- `/api/v1/oauth/jwks`
-
-El middleware valida el token contra Redis y confirma que la sesion siga activa en PostgreSQL.
-
-## Variables de entorno
-
-Revisa [`.env-example`](/C:/Proyectos/APIs/OBIUX/loginApi/.env-example). Las variables mas importantes para levantar el servicio son:
-
-- `PORT`
-- `POSTGRES_URL`
-- `DATABASE_URL`
-- `DB_HOST`, `DB_PORT`, `DB_NAME`, `DB_USERNAME`, `DB_PASSWORD`
-- `REDIS_HOST`, `REDIS_PORT`, `REDIS_PASSWORD`
-- `CH_HOST`, `CH_PORT`, `CH_DB_NAME`, `CH_DB_USER`, `CH_DB_PASSWORD`
-- `SECRET_JWT`
-- `APP_NAME`, `SMTP_HOST`, `SMTP_PORT`, `SMTP_SECURE`, `SMTP_USER`, `SMTP_PASSWORD`, `SMTP_FROM`
-- `OAUTH_GOOGLE_CLIENT_ID`, `OAUTH_GOOGLE_CLIENT_SECRET`
-- `OAUTH_MICROSOFT_CLIENT_ID`, `OAUTH_MICROSOFT_CLIENT_SECRET`
-- `OAUTH_FACEBOOK_CLIENT_ID`, `OAUTH_FACEBOOK_CLIENT_SECRET`
-- `OAUTH_<PROVIDER>_CLIENT_ID`, `OAUTH_<PROVIDER>_CLIENT_SECRET`, `OAUTH_<PROVIDER>_AUTHORIZATION_URL`, `OAUTH_<PROVIDER>_TOKEN_URL`, `OAUTH_<PROVIDER>_USERINFO_URL`
-- `OIDC_KEY_ID`, `OIDC_PRIVATE_KEY`, `OIDC_PUBLIC_KEY`
-
-Si `SMTP_HOST` no esta configurado, el servicio usa el email sender falso y solo registra los correos en consola. Con SMTP configurado, envia correos de cuenta creada, solicitud de verificacion, verificacion exitosa, recuperacion de password y password actualizado.
-
-OAuth externo funciona con rutas genericas como `/api/v1/auth/google`, `/api/v1/auth/google/callback`, `/api/v1/auth/microsoft` y cualquier proveedor configurado con el prefijo `OAUTH_<PROVIDER>_*`.
-
-## Ejecucion
-
-En desarrollo:
+Requisitos: Node.js 22 o superior, PostgreSQL, Redis y ClickHouse.
 
 ```bash
+npm install
+cp .env-example .env
+npx drizzle-kit migrate
 npm run dev
 ```
 
-Con Docker Compose:
+En PowerShell, sustituye `cp` por `Copy-Item`.
+
+Con la configuración de ejemplo, la API queda disponible en `http://localhost:4000/api/v1` y Swagger UI en `http://localhost:4000/doc`.
 
 ```bash
-docker compose -f docker-compose.dev.yml up --build
+curl -X POST http://localhost:4000/api/v1/auth/register \
+  -H "Content-Type: application/json" \
+  -d '{"username":"demo","password":"secret123"}'
+
+curl -X POST http://localhost:4000/api/v1/auth/login \
+  -H "Content-Type: application/json" \
+  -d '{"username":"demo","password":"secret123"}'
 ```
 
-## Documentacion adicional
+## Documentación
 
-Documentacion nueva del servicio:
+- [Instalación y configuración](docs/installation.md)
+- [Referencia completa de la API](docs/api-reference.md)
+- [Arquitectura y flujo interno](docs/architecture.md)
+- [Extender el mini-framework](docs/extending.md)
+- [Operación, seguridad y diagnóstico](docs/operations.md)
 
-- [Vision general del servicio](Update-Diary/service-overview.md)
-- [Mapa de endpoints](Update-Diary/service-endpoints.md)
+## Scripts
 
-Documentacion previa por modulo y bitacora:
+| Comando | Uso |
+| --- | --- |
+| `npm run dev` | Ejecuta `tsx src/index.ts` con recarga mediante Nodemon. |
+| `npm run tsc` | Comprueba los tipos; la configuración actual no emite archivos. |
+| `npm test` | Alias de la comprobación de tipos. No hay pruebas automatizadas adicionales. |
+| `npm run lint` | Analiza el proyecto con Oxlint. |
+| `npm run lint:fix` | Aplica correcciones automáticas de Oxlint. |
+| `npm run format` | Formatea el repositorio con Prettier. |
+| `npm start` | Intenta ejecutar `build/index.js`; requiere una compilación emisora externa porque `tsconfig.json` usa `noEmit`. |
 
-- [Auth module](Update-Diary/auth-module.md)
-- [Users module](Update-Diary/users-module.md)
-- [Addresses module](Update-Diary/addresses-module.md)
-- [Profiles module](Update-Diary/profiles-module.md)
-- [Preferences module](Update-Diary/preferences-module.md)
-- [Entity Swagger](Update-Diary/entity-swagger.md)
+## Alcance actual
+
+La API activa expone únicamente `GET /api/v1/`, `POST /api/v1/auth/register` y `POST /api/v1/auth/login`. No implementa logout, refresh tokens, MFA, OAuth, OIDC HTTP, tenants, roles ni CRUD de usuarios. `src/core/security/oidc-key-pair.ts` es una utilidad interna sin rutas registradas.
+
+Licencia: consulta [LICENSE](LICENSE).

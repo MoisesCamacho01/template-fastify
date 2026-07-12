@@ -1,0 +1,17 @@
+services:
+  redis:
+    image: redis:7-alpine
+    container_name: redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    environment:
+      - REDIS_PASSWORD=StrongPassword123 # Aquí defines tu variable
+    volumes:
+      - redis_data:/data
+    # Usamos sh -c para que Docker pueda interpretar la variable de entorno
+    command: >
+      sh -c "redis-server --appendonly yes --requirepass $$REDIS_PASSWORD"
+
+volumes:
+  redis_data:
